@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/title4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:maxLines="1"
+        android:ellipsize = "end"
+        android:text="Title"
+        android:textSize="16dp"
+        android:textColor="#000000"
+        android:textStyle="bold"/>
+
+    <ImageView
+        android:id="@+id/image4"
+        android:layout_width="fill_parent"
+        android:layout_height="140dp"
+        android:layout_below="@+id/title4"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/teambuilding_04" />
+
+    <TextView
+        android:id="@+id/author4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image4"
+        android:layout_gravity="left"
+        android:layout_marginTop="5dp"
+        android:text="Author"
+        android:textColor="#939292"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/time4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/author4"
+        android:layout_below="@+id/image4"
+        android:text="publishTime"
+        android:textColor="#939292"
+        android:textStyle="bold" />
+
+
+</RelativeLayout>

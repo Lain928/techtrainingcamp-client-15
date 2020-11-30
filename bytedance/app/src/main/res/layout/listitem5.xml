@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/title5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:maxLines="1"
+        android:ellipsize = "end"
+        android:text="Title"
+        android:textColor="#000000"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/image51"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="left"
+            android:layout_weight="1"
+            android:src="@drawable/tb09_1" />
+
+        <ImageView
+            android:id="@+id/image52"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="left"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:src="@drawable/tb09_2" />
+
+        <ImageView
+            android:id="@+id/image53"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="left"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:src="@drawable/tb09_3" />
+
+        <ImageView
+            android:id="@+id/image54"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="left"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:src="@drawable/tb09_4" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/author5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout"
+        android:layout_gravity="left"
+        android:layout_marginTop="5dp"
+        android:text="Author"
+        android:textColor="#939292"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/time5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout"
+        android:layout_gravity="left"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/author5"
+        android:text="publishTime"
+        android:textColor="#939292"
+        android:textStyle="bold" />
+
+</RelativeLayout>

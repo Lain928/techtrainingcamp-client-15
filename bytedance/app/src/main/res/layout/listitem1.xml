@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/title2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="TitleTitleTitleTitleTitle"
+        android:textSize="16dp"
+        android:textColor="#000000"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/author2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_below="@+id/title2"
+        android:layout_marginTop="6dp"
+        android:text="Author"
+        android:textColor="#939292"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/time2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title2"
+        android:layout_gravity="center"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="6dp"
+        android:layout_toRightOf="@id/author2"
+        android:text="publishTime"
+        android:textColor="#939292"
+        android:textStyle="bold" />
+
+</RelativeLayout>

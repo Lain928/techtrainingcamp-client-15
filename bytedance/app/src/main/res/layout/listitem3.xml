@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/image3"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/title3"
+        android:gravity="right"
+        android:src="@drawable/event_02" />
+
+    <TextView
+        android:id="@+id/title3"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:text="Title"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/author3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title3"
+        android:layout_gravity="left"
+        android:layout_marginTop="45dp"
+        android:text="Author"
+        android:textColor="#939292"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/time3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title3"
+        android:layout_gravity="left"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="45dp"
+        android:layout_toRightOf="@id/author3"
+        android:text="publishTime"
+        android:textColor="#939292"
+        android:textStyle="bold" />
+
+
+</RelativeLayout>

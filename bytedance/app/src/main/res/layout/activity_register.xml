@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="70dp"
+        android:text="注 册"
+        android:textSize="30dp"
+        android:textColor="#000000"
+        android:textStyle="bold"/>
+    <RelativeLayout
+        android:id="@+id/register_div"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:padding="35dp"
+        android:layout_margin="22dp" >
+        <TextView
+            android:id="@+id/text_view1_re"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="5dp"
+            android:textColor="#000000"
+            android:text="用户账号："/>
+        <EditText
+            android:id="@+id/account_re"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="      "
+            android:layout_below="@id/text_view1_re"
+            android:singleLine="true"
+            android:inputType="text"/>
+        <!-- 密码 text -->
+        <TextView
+            android:id="@+id/text_view2_re"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/account_re"
+            android:layout_marginTop="3dp"
+            android:textColor="#000000"
+            android:text="用户密码："/>
+        <EditText
+            android:id="@+id/password_re"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_view2_re"
+            android:singleLine="true"
+            android:inputType="textPassword" />
+        <!-- 确认密码 text -->
+        <TextView
+            android:id="@+id/text_view3_re"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/password_re"
+            android:layout_marginTop="3dp"
+            android:textColor="#000000"
+            android:text="确认密码："/>
+        <EditText
+            android:id="@+id/rePassword_re"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_view3_re"
+            android:singleLine="true"
+            android:inputType="textPassword" />
+
+        <!-- 登录button -->
+        <Button
+            android:id="@+id/register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rePassword_re"
+            android:layout_alignRight="@id/rePassword_re"
+            android:layout_marginTop="20dp"
+            android:text="注 册"
+            android:background="#1FD126"
+            android:textColor="#000000"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
