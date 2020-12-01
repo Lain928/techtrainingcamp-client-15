@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.widget.Toast;
 
 import com.example.bytedance.R;
@@ -30,15 +31,16 @@ import okhttp3.Response;
 
 public class LogInActivity extends AppCompatActivity {
 
-    private EditText account,password;
+    private EditText account, password;
     private String strToken = "";
     private SharedPreferences sharedPreferences;
+    private String getAccount, getPassword ;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        sharedPreferences = getSharedPreferences("ccc",MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("ccc", MODE_PRIVATE);
 
         account = findViewById(R.id.account);
         password = findViewById(R.id.password);
@@ -46,52 +48,52 @@ public class LogInActivity extends AppCompatActivity {
         findViewById(R.id.LoginBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String getAccount =  account.getText().toString().trim();
-                String getPassword = password.getText().toString().trim();
-                if (getAccount.isEmpty()){
-                    Toast.makeText(LogInActivity.this,"请输入账号",Toast.LENGTH_SHORT).show();
+                getAccount = account.getText().toString().trim();
+                getPassword = password.getText().toString().trim();
+                if (getAccount.isEmpty()) {
+                    Toast.makeText(LogInActivity.this, "请输入账号", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (getPassword.isEmpty()){
-                    Toast.makeText(LogInActivity.this,"请输入密码",Toast.LENGTH_SHORT).show();
+                if (getPassword.isEmpty()) {
+                    Toast.makeText(LogInActivity.this, "请输入密码", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 OKHttpPost();
-                Intent intent = new Intent(LogInActivity.this,MainActivity.class);
+                Intent intent = new Intent(LogInActivity.this, MainActivity.class);
                 startActivity(intent);
 
-                Toast.makeText(LogInActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
+                Toast.makeText(LogInActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
             }
         });
 
         findViewById(R.id.register).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LogInActivity.this,RegisterActivity.class);
+                Intent intent = new Intent(LogInActivity.this, RegisterActivity.class);
                 startActivity(intent);
             }
         });
     }
 
-    public void OKHttpPost(){
+    public void OKHttpPost() {
         //开启线程
         new Thread(new Runnable() {
             @Override
             public void run() {
-                try{
+                try {
                     // 1 创建 okHttpClient
                     OkHttpClient client = new OkHttpClient.Builder().build();
                     // 2 创建RequestBody
                     Map m = new HashMap();
-                    m.put("username","string");
-                    m.put("password","string");
+                    m.put("username", getAccount);
+                    m.put("password", getPassword);
                     JSONObject jsonObject = new JSONObject(m);
                     String jsonStr = jsonObject.toString();
                     RequestBody requestBody = RequestBody.create(MediaType.parse("application/json;charset=utf-8"), jsonStr);
                     //3 创建request
                     Request request = new Request.Builder()
                             .url("https://vcapi.lvdaqian.cn/login")
-                            .addHeader("contentType","application/json;charset=utf-8")
+                            .addHeader("contentType", "application/json;charset=utf-8")
                             .post(requestBody)
                             .build();
 
@@ -101,7 +103,7 @@ public class LogInActivity extends AppCompatActivity {
                     call.enqueue(new Callback() {
                         @Override
                         public void onFailure(Call call, IOException e) {
-                            Toast.makeText(LogInActivity.this,"网络请求失败",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LogInActivity.this, "网络请求失败", Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
@@ -110,12 +112,12 @@ public class LogInActivity extends AppCompatActivity {
                             try {
                                 JSONObject rootObject = new JSONObject(result);
                                 strToken = rootObject.getString("token");
-                                if(strToken != ""){
+                                if (strToken != "") {
                                     //token存储
 //                                    Toast.makeText(LogInActivity.this,"网络请求成功",Toast.LENGTH_SHORT).show();
 
                                     SharedPreferences.Editor editor = sharedPreferences.edit();
-                                    editor.putString("token",strToken);
+                                    editor.putString("token", strToken);
                                     editor.apply();
                                 }
                             } catch (JSONException e) {
@@ -123,7 +125,7 @@ public class LogInActivity extends AppCompatActivity {
                             }
                         }
                     });
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
