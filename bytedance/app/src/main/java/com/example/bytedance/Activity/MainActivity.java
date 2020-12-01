@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         listView = (ListView) this.findViewById(R.id.listview);
         String strTextId = "event_01";
-        sharedPreferences = getSharedPreferences("999",MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("byteDance",MODE_PRIVATE);
         strToken = sharedPreferences.getString("token","");
         MainOKHttpGet(strToken, strTextId);
 

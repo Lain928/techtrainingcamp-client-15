@@ -44,7 +44,7 @@ public class LogInActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        sharedPreferences = getSharedPreferences("999", MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("byteDance", MODE_PRIVATE);
 
         account = findViewById(R.id.account);
         password = findViewById(R.id.password);

@@ -42,7 +42,7 @@ public class ContentActivity extends Activity {
         drawable = getResources().getDrawable(R.mipmap.ic_launcher);
 
 
-        sharedPreferences = getSharedPreferences("999", MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("byteDance", MODE_PRIVATE);
         strToken = sharedPreferences.getString("token", "");
         OKHttpGet(strToken, textId);
 
