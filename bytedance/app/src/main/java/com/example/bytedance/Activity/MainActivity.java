@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         listView = (ListView) this.findViewById(R.id.listview);
-//        String strTextId = "event_01";
+        String strTextId = "event_01";
 
         new Thread(new Runnable() {
             @Override
@@ -55,22 +55,25 @@ public class MainActivity extends AppCompatActivity {
                 listView.setAdapter(listAdapter);
             }
         }).start();
-        sharedPreferences = getSharedPreferences("ccc",MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("aaa",MODE_PRIVATE);
         strToken = sharedPreferences.getString("token","");
+        MainOKHttpGet(strToken, strTextId);
+
 
         // listview点击事件 点击后判断缓存中是否存在账号密码从而决定是否进入登录界面
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //存入缓存的登录账号密码你不在进行输入
-
                 String textId = "";
                 String author = "";
                 String title = "";
                 String time = "";
-                if (strToken.isEmpty()) {
+
+                if (strToken.isEmpty() || nCode == 401) {
                     Intent intent = new Intent(MainActivity.this, LogInActivity.class);
                     startActivity(intent);
+                    nCode = 200;
                     return;
                 }
 
@@ -88,5 +91,29 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public static void MainOKHttpGet(String token, String textId) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    String url = "https://vcapi.lvdaqian.cn/article/" + textId + "?markdown=true";
+                    OkHttpClient client = new OkHttpClient();
+                    Request request = new Request.Builder()
+                            .get()
+                            .url(url)
+                            .addHeader("accept", "application/json")
+                            .addHeader("Authorization", "Bearer " + token)
+                            .build();
+
+                    Call call = client.newCall(request);
+                    Response response = call.execute();
+                    nCode = response.code();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 }

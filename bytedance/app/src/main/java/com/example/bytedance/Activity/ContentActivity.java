@@ -69,9 +69,9 @@ public class ContentActivity extends Activity {
         drawable = getResources().getDrawable(R.mipmap.ic_launcher);
 
 
-        sharedPreferences = getSharedPreferences("ccc", MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("aaa", MODE_PRIVATE);
         strToken = sharedPreferences.getString("token", "");
-        OKHttpGet(strToken, textId);
+
 
         pre = (Button) this.findViewById(R.id.previous);
         next = (Button) this.findViewById(R.id.next);
@@ -105,7 +105,6 @@ public class ContentActivity extends Activity {
                     title="4-12 虹桥天地，蹦起来吧！" ;
                     time="2019年4月11日";
                 }
-                OKHttpGet(strToken, textId);
             }
         });
 
@@ -138,9 +137,9 @@ public class ContentActivity extends Activity {
                     title = "2020字节跳动全球员工摄影大赛邀请函" ;
                     time="2020年10月7日";
                 }
-                OKHttpGet(strToken, textId);
             }
         });
+        OKHttpGet(strToken, textId);
     }
 
     public static void OKHttpGet(String token, String textId) {
@@ -162,7 +161,6 @@ public class ContentActivity extends Activity {
                     int nCode = response.code();
                     String str = response.body().string();
                     JSONObject rootObject = new JSONObject(str);
-//                    author = rootObject.getString("author") ;
                     content = rootObject.getString("data");
                     tv_author.setText(author);
                     tv_title.setText(title);

@@ -52,16 +52,24 @@
             android:layout_below="@id/text_view2"
             android:singleLine="true"
             android:inputType="textPassword" />
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/password"
+            android:text="显示密码" />
         <!-- 登录button -->
         <Button
             android:id="@+id/LoginBtn"
-            android:layout_width="match_parent"
+            android:layout_width="298dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/password"
-            android:layout_alignRight="@id/password"
-            android:text="登 录"
+            android:layout_below="@id/checkBox"
+            android:layout_alignRight="@id/checkBox"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="-210dp"
             android:background="#1FD126"
-            android:textColor="#000000"/>
+            android:text="登 录"
+            android:textColor="#000000" />
         <Button
             android:id="@+id/register"
             android:layout_width="wrap_content"
