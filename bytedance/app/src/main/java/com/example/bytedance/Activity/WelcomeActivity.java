@@ -60,11 +60,9 @@ public class WelcomeActivity extends Activity{
         @Override
         public boolean handleMessage(android.os.Message msg) {
             if (msg.what == 0) {
-                //textView.setText(getCount()+"");
                 btnView.setText("倒计时："+ getCount()+"s");
                 mHandler.sendEmptyMessageDelayed(0, 1000);
                 animation.reset();
-                //textView.startAnimation(animation);
             }
             return false;
         }

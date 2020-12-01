@@ -13,7 +13,7 @@
         android:maxLines="1"
         android:ellipsize = "end"
         android:text="Title"
-        android:textSize="16dp"
+        android:textSize="20dp"
         android:textColor="#000000"
         android:textStyle="bold"/>
 

@@ -44,7 +44,7 @@ public class LogInActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        sharedPreferences = getSharedPreferences("ppp", MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("999", MODE_PRIVATE);
 
         account = findViewById(R.id.account);
         password = findViewById(R.id.password);
@@ -133,9 +133,6 @@ public class LogInActivity extends AppCompatActivity {
                                 JSONObject rootObject = new JSONObject(result);
                                 strToken = rootObject.getString("token");
                                 if (strToken != "") {
-                                    //token存储
-//                                    Toast.makeText(LogInActivity.this,"网络请求成功",Toast.LENGTH_SHORT).show();
-
                                     SharedPreferences.Editor editor = sharedPreferences.edit();
                                     editor.putString("token", strToken);
                                     editor.apply();
