@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -45,7 +44,7 @@ public class LogInActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        sharedPreferences = getSharedPreferences("aaa", MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("ppp", MODE_PRIVATE);
 
         account = findViewById(R.id.account);
         password = findViewById(R.id.password);
@@ -66,6 +65,7 @@ public class LogInActivity extends AppCompatActivity {
                 }
                 OKHttpPost();
                 Intent intent = new Intent(LogInActivity.this, MainActivity.class);
+                intent.putExtra("code",200);
                 startActivity(intent);
 
                 Toast.makeText(LogInActivity.this, "登录成功", Toast.LENGTH_SHORT).show();

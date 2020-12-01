@@ -4,42 +4,15 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Message;
-import android.text.Html;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.style.ImageSpan;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.webkit.JsResult;
-import android.webkit.WebChromeClient;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.annotation.LongDef;
 import androidx.annotation.Nullable;
-
 import com.example.bytedance.R;
-import com.zzhoujay.markdown.MarkDown;
-
-import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.IOException;
-
 import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class ContentActivity extends Activity {
@@ -69,9 +42,9 @@ public class ContentActivity extends Activity {
         drawable = getResources().getDrawable(R.mipmap.ic_launcher);
 
 
-        sharedPreferences = getSharedPreferences("aaa", MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("ppp", MODE_PRIVATE);
         strToken = sharedPreferences.getString("token", "");
-
+        OKHttpGet(strToken, textId);
 
         pre = (Button) this.findViewById(R.id.previous);
         next = (Button) this.findViewById(R.id.next);
@@ -105,6 +78,7 @@ public class ContentActivity extends Activity {
                     title="4-12 虹桥天地，蹦起来吧！" ;
                     time="2019年4月11日";
                 }
+                OKHttpGet(strToken, textId);
             }
         });
 
@@ -137,9 +111,9 @@ public class ContentActivity extends Activity {
                     title = "2020字节跳动全球员工摄影大赛邀请函" ;
                     time="2020年10月7日";
                 }
+                OKHttpGet(strToken, textId);
             }
         });
-        OKHttpGet(strToken, textId);
     }
 
     public static void OKHttpGet(String token, String textId) {

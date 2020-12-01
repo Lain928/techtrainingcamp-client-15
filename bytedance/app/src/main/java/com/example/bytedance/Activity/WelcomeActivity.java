@@ -17,27 +17,36 @@ import com.example.bytedance.R;
 
 public class WelcomeActivity extends Activity{
     // 声明控件对象
-    private TextView textView;
     private Button btnView;
     //声明时间有多少;
     private int count = 5;
     private Animation animation;
+    private boolean flagToMain = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // 下面的话就是去除标题的方法
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_splash);
-        // 初始化控件对象textView
-        //textView = (TextView) findViewById(R.id.textView);
         btnView = (Button) findViewById(R.id.btn_splash);
         animation = AnimationUtils.loadAnimation(this, R.anim.animation_text);
         mHandler.sendEmptyMessageDelayed(0, 1000);
+
+        //点击按键跳过广告页
+        btnView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+                flagToMain = false;
+            }
+        });
     }
-    //咱在写一个计算Welcome界面的广告时间结束后进入主界面的方法
+    //Welcome界面的广告时间结束后进入主界面的方法
     private int getCount() {
         count--;
-        if (count == 0) {
+        if (count == 0 && flagToMain) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
@@ -45,8 +54,7 @@ public class WelcomeActivity extends Activity{
         return count;
     }
 
-
-    //进行一个消息的处理
+    //进行消息的处理
     @SuppressLint("HandlerLeak")
     private Handler mHandler = new Handler(new Handler.Callback() {
         @Override

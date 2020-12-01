@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,21 +13,11 @@ import com.example.bytedance.Info.JsonLoad;
 import com.example.bytedance.Info.JsonUtils;
 import com.example.bytedance.R;
 import com.example.bytedance.adapter.MyAdapter;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
@@ -46,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         listView = (ListView) this.findViewById(R.id.listview);
         String strTextId = "event_01";
+        sharedPreferences = getSharedPreferences("ppp",MODE_PRIVATE);
+        strToken = sharedPreferences.getString("token","");
+        MainOKHttpGet(strToken, strTextId);
 
         new Thread(new Runnable() {
             @Override
@@ -55,10 +47,6 @@ public class MainActivity extends AppCompatActivity {
                 listView.setAdapter(listAdapter);
             }
         }).start();
-        sharedPreferences = getSharedPreferences("aaa",MODE_PRIVATE);
-        strToken = sharedPreferences.getString("token","");
-        MainOKHttpGet(strToken, strTextId);
-
 
         // listview点击事件 点击后判断缓存中是否存在账号密码从而决定是否进入登录界面
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -70,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 String title = "";
                 String time = "";
 
-                if (strToken.isEmpty() || nCode == 401) {
+                if (nCode == 401) {
                     Intent intent = new Intent(MainActivity.this, LogInActivity.class);
                     startActivity(intent);
                     nCode = 200;
