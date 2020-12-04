@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private String strToken = "";
     private List<JsonLoad> jsonDataList;
     private SharedPreferences sharedPreferences;
-    private static boolean flag = false;
+    private static boolean flag = true;
     private static int nCode = 200;
 
     @Override
@@ -35,9 +35,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         listView = (ListView) this.findViewById(R.id.listview);
         String strTextId = "event_01";
-        sharedPreferences = getSharedPreferences("byteDance",MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("234",MODE_PRIVATE);
         strToken = sharedPreferences.getString("token","");
         MainOKHttpGet(strToken, strTextId);
+        flag = getIntent().getBooleanExtra("flag",true);
 
         new Thread(new Runnable() {
             @Override
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 String title = "";
                 String time = "";
 
-                if (nCode == 401) {
+                if (nCode == 401 && flag) {
                     Intent intent = new Intent(MainActivity.this, LogInActivity.class);
                     startActivity(intent);
                     nCode = 200;

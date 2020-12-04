@@ -39,12 +39,13 @@ public class LogInActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private String getAccount, getPassword ;
     private CheckBox checkBox;
+    private boolean flag = true;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        sharedPreferences = getSharedPreferences("byteDance", MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("234", MODE_PRIVATE);
 
         account = findViewById(R.id.account);
         password = findViewById(R.id.password);
@@ -65,7 +66,9 @@ public class LogInActivity extends AppCompatActivity {
                 }
                 OKHttpPost();
                 Intent intent = new Intent(LogInActivity.this, MainActivity.class);
+                flag = false;
                 intent.putExtra("code",200);
+                intent.putExtra("flag",flag);
                 startActivity(intent);
 
                 Toast.makeText(LogInActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
