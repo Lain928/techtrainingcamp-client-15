@@ -7,9 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
 import androidx.annotation.Nullable;
+
 import com.example.bytedance.R;
+import com.zzhoujay.richtext.RichText;
+
+
 import org.json.JSONObject;
+
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -22,7 +28,6 @@ public class ContentActivity extends Activity {
     private static TextView tv_author, tv_title, tv_time, tv_data;
     private static String time, title, author;
     private static Drawable drawable;
-    private static Drawable drawable1;
     Button pre, next;
 
 
@@ -55,29 +60,29 @@ public class ContentActivity extends Activity {
             public void onClick(View v) {
                 if (textId.equals("event_01")) {
                     textId = "teamBuilding_09";
-                    author = "vc mobile team" ;
-                    title="9月18日淀山湖户外团建" ;
-                    time="2020年9月7日";
+                    author = "vc mobile team";
+                    title = "9月18日淀山湖户外团建";
+                    time = "2020年9月7日";
                 } else if (textId.equals("bytetalk_01")) {
                     textId = "event_01";
-                    author = "bytedance" ;
-                    title = "2020字节跳动全球员工摄影大赛邀请函" ;
-                    time="2020年10月7日";
+                    author = "bytedance";
+                    title = "2020字节跳动全球员工摄影大赛邀请函";
+                    time = "2020年10月7日";
                 } else if (textId.equals("event_02")) {
                     textId = "bytetalk_01";
                     author = "bytedance";
-                    title = "绝对坦率：打造反馈文化" ;
-                    time="2020年7月7日" ;
+                    title = "绝对坦率：打造反馈文化";
+                    time = "2020年7月7日";
                 } else if (textId.equals("teamBuilding_04")) {
                     textId = "event_02";
-                    author = "bytedance" ;
-                    title="Lark·巡洋计划开发者大赛圆满结束" ;
-                    time="2019年10月7日";
+                    author = "bytedance";
+                    title = "Lark·巡洋计划开发者大赛圆满结束";
+                    time = "2019年10月7日";
                 } else if (textId.equals("teamBuilding_09")) {
                     textId = "teamBuilding_04";
-                    author = "vc team" ;
-                    title="4-12 虹桥天地，蹦起来吧！" ;
-                    time="2019年4月11日";
+                    author = "vc team";
+                    title = "4-12 虹桥天地，蹦起来吧！";
+                    time = "2019年4月11日";
                 }
                 OKHttpGet(strToken, textId);
             }
@@ -89,28 +94,28 @@ public class ContentActivity extends Activity {
                 if (textId.equals("event_01")) {
                     textId = "bytetalk_01";
                     author = "bytedance";
-                    title = "绝对坦率：打造反馈文化" ;
-                    time="2020年7月7日" ;
+                    title = "绝对坦率：打造反馈文化";
+                    time = "2020年7月7日";
                 } else if (textId.equals("bytetalk_01")) {
                     textId = "event_02";
-                    author = "bytedance" ;
-                    title="Lark·巡洋计划开发者大赛圆满结束" ;
-                    time="2019年10月7日";
+                    author = "bytedance";
+                    title = "Lark·巡洋计划开发者大赛圆满结束";
+                    time = "2019年10月7日";
                 } else if (textId.equals("event_02")) {
                     textId = "teamBuilding_04";
-                    author = "vc team" ;
-                    title="4-12 虹桥天地，蹦起来吧！" ;
-                    time="2019年4月11日";
+                    author = "vc team";
+                    title = "4-12 虹桥天地，蹦起来吧！";
+                    time = "2019年4月11日";
                 } else if (textId.equals("teamBuilding_04")) {
                     textId = "teamBuilding_09";
-                    author = "vc mobile team" ;
-                    title="9月18日淀山湖户外团建" ;
-                    time="2020年9月7日";
+                    author = "vc mobile team";
+                    title = "9月18日淀山湖户外团建";
+                    time = "2020年9月7日";
                 } else if (textId.equals("teamBuilding_09")) {
                     textId = "event_01";
-                    author = "bytedance" ;
-                    title = "2020字节跳动全球员工摄影大赛邀请函" ;
-                    time="2020年10月7日";
+                    author = "bytedance";
+                    title = "2020字节跳动全球员工摄影大赛邀请函";
+                    time = "2020年10月7日";
                 }
                 OKHttpGet(strToken, textId);
             }
@@ -140,12 +145,11 @@ public class ContentActivity extends Activity {
                     tv_author.setText(author);
                     tv_title.setText(title);
                     tv_time.setText(time);
-                    tv_data.setText(content);
+                    RichText.fromMarkdown(content).into(tv_data);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-
 
         }).start();
     }
